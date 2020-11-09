@@ -18,14 +18,14 @@ function HomeScreen(props) {
 
   }, [])
 
-  console.log(loading)
+  console.log(productList)
 
   return (
     loading ? <div>Loading...</div> : 
       error ? <div>{error}</div> : 
         <ul className="products">
           {
-            products.map(product => {
+            productList.products.map(product => {
               return (
                 <li key={product._id}>
                   <div className="product">
