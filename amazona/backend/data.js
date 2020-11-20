@@ -8,7 +8,8 @@ const data = {
             price: 60,
             brand: 'Nike',
             rating: 5,
-            numReviews: 5
+            numReviews: 5,
+            countInStock: 3,
         },
         {
             _id: '2',
@@ -18,7 +19,8 @@ const data = {
             price: 70,
             brand: 'Nike',
             rating: 4.5,
-            numReviews: 10
+            numReviews: 10,
+            countInStock: 0,
         },
         {
             _id: '3',
@@ -28,7 +30,8 @@ const data = {
             price: 50,
             brand: 'Nike',
             rating: 3.5,
-            numReviews: 15
+            numReviews: 15,
+            countInStock: 5,
         },
         {
             _id: '4',
@@ -38,7 +41,8 @@ const data = {
             price: 90,
             brand: 'Nike',
             rating: 2.5,
-            numReviews: 20
+            numReviews: 20,
+            countInStock: 8,
         },
     ]
 }

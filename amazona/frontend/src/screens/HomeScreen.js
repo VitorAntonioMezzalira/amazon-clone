@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { listProducts } from '../actions/productActions';
 
-function HomeScreen(props) {
+function HomeScreen() {
 
   const productList = useSelector(state => state.productList);
-  const { products, loading, error } = productList;
+
+  const { loading, error } = productList;
+  const products = productList.products;
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -18,14 +20,12 @@ function HomeScreen(props) {
 
   }, [])
 
-  console.log(productList)
-
   return (
     loading ? <div>Loading...</div> : 
       error ? <div>{error}</div> : 
         <ul className="products">
           {
-            productList.products.map(product => {
+            products.map(product => {
               return (
                 <li key={product._id}>
                   <div className="product">
