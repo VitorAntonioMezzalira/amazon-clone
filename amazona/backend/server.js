@@ -9,8 +9,6 @@ dotenv.config();
 
 const mongodbUrl = config.MONGODB_URL;
 
-console.log(mongodbUrl);
-
 mongoose.connect(mongodbUrl, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
@@ -20,7 +18,8 @@ mongoose.connect(mongodbUrl, {
 
 const app = express();
 
-app.use('/api/users/', userRoute);
+app.use('/api/users', userRoute);
+
 
 app.get('/api/products', (req, res) => {
   res.send(data.products);
