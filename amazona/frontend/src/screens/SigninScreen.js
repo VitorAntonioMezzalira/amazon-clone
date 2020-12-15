@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
+import { signin } from '../actions/userActions'; 
 
 function SigninScreen(props) {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const userSignin = useSelector(state => state.userSignin);
+  const { loading, userInfo, error } = userSignin;
   const dispatch = useDispatch();
 
   useEffect(() => {
-
+    if(userInfo) {
+      props.history.push('/')
+    }
     return () => {
       //
     }
-  }, []);
+  }, [userInfo]);
 
   const submitHandler = (e) => {
     e.preventDefault();
+    dispatch(signin(email, password));
   }
 
   return (
@@ -25,7 +30,11 @@ function SigninScreen(props) {
       <form onSubmit={submitHandler}>
         <ul className="form-container">
           <li>
-            Signin
+             <h2>Sign-In</h2>
+          </li>
+          <li>
+            { loading && <div>Loading...</div> }
+            { error && <div>{error}</div> }
           </li>
           <li>
             <label for="email">Email</label>
@@ -39,10 +48,10 @@ function SigninScreen(props) {
             <button type="submit" className="button primary">Signin</button>
           </li>
           <li>
-            New to Amazona
+            New to Amazona?
           </li>
           <li>
-            <Link to="/register" className="button full-width">Create your amazona account</Link>
+            <Link to="/register" className="button secondary text-center">Create your amazona account</Link>
           </li>
         </ul>
       </form>
